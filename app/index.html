@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast — GTA-Style Cover Studio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">NC</span><span class="brand-name">NEON COAST</span><span class="brand-sub">cover studio</span></div>
+  <div class="top-actions">
+    <button id="undoBtn" title="Undo (Ctrl+Z)">↩ Undo</button>
+    <button id="redoBtn" title="Redo (Ctrl+Y)">↪ Redo</button>
+    <button id="shuffleBtn" title="Shuffle layout + grade">⚄ Shuffle</button>
+    <button id="exportBtn" class="primary">⬇ Export PNG</button>
+  </div>
+</header>
+<main class="workspace">
+  <aside class="panel controls" id="controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <p class="hint">Drop a photo onto the preview, or load one into a slot. Photos never leave your machine.</p>
+      <div class="slots" id="slots"></div>
+      <label class="file-btn">+ Add photo <input type="file" id="fileInput" accept="image/*" multiple hidden></label>
+      <button id="fillOneBtn" class="ghost">Fill every panel with photo 1</button>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div class="chips" id="layoutChips"></div>
+      <label class="row">Selected panel
+        <select id="panelSelect"></select>
+      </label>
+      <label class="row">Zoom <input type="range" id="zoomSlider" min="1" max="3" step="0.01" value="1.2"></label>
+      <label class="row">Panel photo
+        <select id="panelPhoto"></select>
+      </label>
+      <p class="hint">Drag on the preview to pan the selected panel. Scroll over it to zoom.</p>
+    </section>
+    <section>
+      <h2>3 · Caption</h2>
+      <label class="row">Title <input type="text" id="titleInput" value="NEON SHORE" maxlength="24"></label>
+      <label class="row">Subtitle <input type="text" id="subtitleInput" value="Vice City nights" maxlength="40"></label>
+      <label class="row">Badge <input type="text" id="badgeInput" value="EST. 2026" maxlength="18"></label>
+      <label class="row">Heat <input type="range" id="heatSlider" min="0" max="5" step="1" value="4"></label>
+      <label class="row">Title size <input type="range" id="titleSizeSlider" min="0.7" max="1.4" step="0.05" value="1"></label>
+    </section>
+    <section>
+      <h2>4 · Grade</h2>
+      <div class="chips" id="gradeChips"></div>
+      <label class="row check"><input type="checkbox" id="grainToggle" checked> Film grain + vignette</label>
+      <label class="row check"><input type="checkbox" id="halftoneToggle" checked> Halftone title block</label>
+    </section>
+    <section>
+      <h2>5 · Export size</h2>
+      <div class="chips" id="sizeChips"></div>
+      <p class="hint" id="exportHint">Exports a real PNG at the size above.</p>
+    </section>
+  </aside>
+  <section class="stage">
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="preview" width="1080" height="1080"></canvas>
+      <div class="drop-hint" id="dropHint">Drop a photo here</div>
+    </div>
+    <div class="stage-bar">
+      <span id="statusLine">Ready — drag a photo onto the cover, or pick a layout.</span>
+      <span id="sizeLine">1080 × 1080</span>
+    </div>
+  </section>
+</main>
+<footer class="foot">Neon Coast Cover Studio — original art, lettering and fonts (Anton, Archivo Black, Pacifico under the SIL Open Font License). No Rockstar Games logo, artwork or fonts. Runs fully offline.</footer>
+<div id="selftest" style="display:none"></div>
+<script src="app.js"></script>
+</body>
+</html>
